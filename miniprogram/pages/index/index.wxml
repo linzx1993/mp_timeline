@@ -1,0 +1,42 @@
+<!--index.wxml-->
+<view class="container">
+    <view class="page-header-image">
+        <image class="page-header-image" src="https://img.souche.com/f2e/ead4988fd06594aef2c9828f7cc69608.jpg"></image>
+        
+            <image  class="header-image" src="https://img.souche.com/f2e/04fc012be76caf8c0ea5cffb1e13a95e.jpg"></image>
+        
+    </view>
+    
+    
+    <view class="time-list">
+        <view class="time-info">弯弯小姐与林先生的生活小记</view>
+        <view class="time-container"
+            wx:for="{{timeList}}"
+            wx:for-item="time"
+            wx:for-index="index"
+            wx:key="{{time.createDate}}"
+        >
+            <view class="time-header">
+                <image class="time-header-image" src='{{time.avatarUrl}}'></image>
+            </view>
+            <view class="time-content">
+                <view class="time-name">{{time.name}}</view>
+                <view class="time-description">{{time.description}}</view>
+                <view class="time-picture-list">
+                    <image wx:for="{{time.pictureList}}"
+                        wx:for-item="picture"
+                        wx:for-index="i"
+                        wx:key="*this"
+                        class="time-picture"
+                        lazy-load="{{true}}"
+                        data-index="{{index + '-' + i}}"
+                        bindtap="viewImage"
+                        src='{{picture+ "?x-oss-process=image/auto-orient,1/quality,Q_50"}}' mode="aspectFill"></image>
+                </view>
+                 <view class="time-date">{{time.createDate}}</view>
+            </view>
+           
+        </view>
+    </view>
+
+</view>

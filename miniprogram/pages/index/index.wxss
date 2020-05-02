@@ -1,0 +1,76 @@
+.page-header-image {
+    position: relative;
+    width: 100vw;
+    height: 400rpx;
+}
+
+.header-image {
+    width: 120rpx;
+    height: 120rpx;
+    position: absolute;
+    bottom: -60rpx;
+    right:40rpx;
+    border-radius: 8rpx;
+}
+
+.time-info {
+    padding: 12rpx 12rpx 0 0;
+    text-align: right;
+    color: #8D8E99;
+    font-size: 24rpx;
+    line-height: 36rpx;
+}
+
+.time-list {
+    margin-top: 60rpx;
+}
+
+.time-container {
+    margin-top: 12rpx;
+    display: flex;
+    padding: 32rpx;
+    border-bottom: 1rpx solid #ee5f11;
+    border-bottom: 1px solid #ebedf0;
+}
+
+.time-header-image {
+    width: 80rpx;
+    height: 80rpx;
+    margin-right: 24rpx;
+    border-radius: 12rpx;
+}
+
+.time-content {
+
+}
+
+.time-name {
+    margin-bottom:12rpx;
+    color: #ff571a;
+    font-size: 32rpx;
+    font-weight: bold;
+}
+
+.time-description {
+    margin-bottom: 12rpx;
+    color: #1b1c33;
+    font-size: 28rpx;
+    line-height: 36rpx;
+}
+
+.time-picture-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.time-picture {
+    margin: 12rpx 12rpx 0 0;
+    width: 180rpx;
+    height: 180rpx;
+}
+
+.time-date {
+    margin-top: 12rpx;
+    color: #8D8E99;
+    font-size: 24rpx;
+}
