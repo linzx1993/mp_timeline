@@ -1,7 +1,8 @@
 .page-header-image {
     position: relative;
     width: 100vw;
-    height: 400rpx;
+    height: 500rpx;
+    border-radius: 8rpx;
 }
 
 .header-image {
@@ -11,6 +12,63 @@
     bottom: -60rpx;
     right:40rpx;
     border-radius: 8rpx;
+}
+
+/* 音频盒子 */
+.audio-container {
+    margin: 24rpx 32rpx;
+    padding: 36rpx 24rpx;
+    /* height: 160rpx; */
+    background-color: #f6f6f6;
+    border-radius: 8rpx;
+}
+
+.audio-title {
+    font-size: 36rpx;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.audio-author {
+    margin-top: 12rpx;
+    color: #8D8E99;
+    font-size: 24rpx;
+    line-height: 36rpx;
+}
+
+.audio-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.audio-line-container {
+    margin-right: 48rpx;
+
+    flex: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.audio-line {
+    margin: 24rpx 0 0 0;
+    height: 4rpx;
+    width: 100%;
+    background-color: #ebedf0;
+}
+
+.audio-time {
+    display: flex;
+    justify-content: space-between;
+    color: #8D8E99;
+    font-size: 24rpx;
+    width: 100%;
+}
+
+.audio-start {
+    width: 48rpx;
+    height: 48rpx;
 }
 
 .time-info {
@@ -73,4 +131,25 @@
     margin-top: 12rpx;
     color: #8D8E99;
     font-size: 24rpx;
+}
+
+.comment-container {
+    /* display: flex; */
+    margin: 18rpx 12rpx 0 0;
+    background-color: rgb(247, 247, 247);
+    padding: 12rpx;
+    font-size: 28rpx;
+    line-height: 40rpx;
+    border-radius: 4rpx;
+}
+.comment-container .creater {
+    font-weight: bold;
+    flex: none;
+    color: #ff571a;
+}
+
+.comment-container .text {
+    margin-left: 8rpx;
+    flex: auto;
+    color: #1b1c33
 }

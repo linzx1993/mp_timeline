@@ -1,27 +1,45 @@
 <!--index.wxml-->
 <view class="container">
     <view class="page-header-image">
-        <image class="page-header-image" src="https://img.souche.com/f2e/ead4988fd06594aef2c9828f7cc69608.jpg"></image>
-        
-            <image  class="header-image" src="https://img.souche.com/f2e/04fc012be76caf8c0ea5cffb1e13a95e.jpg"></image>
+        <image class="page-header-image" mode="aspectFill" src="https://img.souche.com/f2e/ead4988fd06594aef2c9828f7cc69608.jpg"></image>
+        <open-data type="userAvatarUrl"  class="header-image"></open-data>
+            <!-- <image  class="header-image" src="https://img.souche.com/f2e/04fc012be76caf8c0ea5cffb1e13a95e.jpg"></image> -->
         
     </view>
     
     
     <view class="time-list">
-        <view class="time-info">弯弯小姐与林先生的生活小记</view>
+        <view class="time-info">陈小姐和林先生的生活小事</view>
+
+         <view class="audio-container">
+            <view class="audio-title">白羊</view>
+            <!-- <view class="audio-author">林先生</view> -->
+            <view class="audio-content">
+                <view class="audio-line-container">
+                    <view class="audio-line"></view>
+                    <view class="audio-time">
+                        <view class="audio-time-start">0:00</view>
+                        <view class="audio-time-end">3:42</view>
+                    </view>
+                </view>
+                <image class="audio-start" 
+                    src='http://img.souche.com/f2e/1073e5e5b4d62970686c2db0e015c052.png'
+                    bind:tap="startAudio" />
+            </view>
+        </view>
         <view class="time-container"
             wx:for="{{timeList}}"
             wx:for-item="time"
             wx:for-index="index"
-            wx:key="{{time.createDate}}"
+            wx:key="*this"
         >
             <view class="time-header">
                 <image class="time-header-image" src='{{time.avatarUrl}}'></image>
             </view>
+
             <view class="time-content">
                 <view class="time-name">{{time.name}}</view>
-                <view class="time-description">{{time.description}}</view>
+                <text class="time-description">{{time.description}}</text>
                 <view class="time-picture-list">
                     <image wx:for="{{time.pictureList}}"
                         wx:for-item="picture"
@@ -31,9 +49,18 @@
                         lazy-load="{{true}}"
                         data-index="{{index + '-' + i}}"
                         bindtap="viewImage"
-                        src='{{picture+ "?x-oss-process=image/auto-orient,1/quality,Q_50"}}' mode="aspectFill"></image>
+                        src='{{picture+ "/quality,Q_50"}}' mode="aspectFill"></image>
                 </view>
                  <view class="time-date">{{time.createDate}}</view>
+                 <view class="comment-list" wx:if="{{time.commentList}}">
+                    <view class="comment-container" 
+                        wx:for="{{time.commentList}}"
+                        wx:for-item="comment"
+                        wx:key="*this">
+                        <text class="creater">{{comment.creater}}:</text>
+                        <text class="text">{{comment.text}}</text>
+                    </view>
+                 </view>
             </view>
            
         </view>
