@@ -1,10 +1,10 @@
+<wxs module='filter' src='../../utils/filter.wxs'></wxs>
 <!--index.wxml-->
 <view class="container">
     <view class="page-header-image">
         <image class="page-header-image" mode="aspectFill" src="https://img.souche.com/f2e/ead4988fd06594aef2c9828f7cc69608.jpg"></image>
         <open-data type="userAvatarUrl"  class="header-image"></open-data>
             <!-- <image  class="header-image" src="https://img.souche.com/f2e/04fc012be76caf8c0ea5cffb1e13a95e.jpg"></image> -->
-        
     </view>
     
     
@@ -16,22 +16,35 @@
             <!-- <view class="audio-author">林先生</view> -->
             <view class="audio-content">
                 <view class="audio-line-container">
-                    <view class="audio-line"></view>
+                    <view class="audio-line">
+                        <view style="right: {{audioTimePercent}}" class="audio-underline"></view>
+                    </view>
                     <view class="audio-time">
-                        <view class="audio-time-start">0:00</view>
-                        <view class="audio-time-end">3:42</view>
+                        <view class="audio-time-start">{{filter.formatStr(audioTime)}}</view>
+                        <view class="audio-time-end">{{filter.formatStr(audioTimeCount)}}</view>
                     </view>
                 </view>
+                <image class="audio-start"
+                    src='http://img.souche.com/f2e/98ac6bbfbdd2560698731655abb6b096.png'
+                    wx:if="{{audioPlay}}"
+                    bind:tap="stopAudio" />
                 <image class="audio-start" 
-                    src='http://img.souche.com/f2e/1073e5e5b4d62970686c2db0e015c052.png'
-                    bind:tap="startAudio" />
+                    src='http://img.souche.com/f2e/a4b0bb3bd3e6abbab9c974293b811071.png'
+                    wx:else
+                bind:tap="startAudio" />
             </view>
+        </view>
+        <view class="sort-order" wx:if="{{sort}}" bind:tap="handleSort">
+            <image class="sort-image up" src='https://img.souche.com/f2e/eb63fde051d2492721219c5b3c424dfb.png' />倒叙
+        </view>
+        <view class="sort-order" wx:else  bind:tap="handleSort">
+            <image class="sort-image" src='https://img.souche.com/f2e/eb63fde051d2492721219c5b3c424dfb.png' />正叙
         </view>
         <view class="time-container"
             wx:for="{{timeList}}"
             wx:for-item="time"
             wx:for-index="index"
-            wx:key="*this"
+            wx:key="index"
         >
             <view class="time-header">
                 <image class="time-header-image" src='{{time.avatarUrl}}'></image>
@@ -44,19 +57,27 @@
                     <image wx:for="{{time.pictureList}}"
                         wx:for-item="picture"
                         wx:for-index="i"
-                        wx:key="*this"
+                        wx:key="i"
                         class="time-picture"
                         lazy-load="{{true}}"
                         data-index="{{index + '-' + i}}"
                         bindtap="viewImage"
-                        src='{{picture+ "/quality,Q_50"}}' mode="aspectFill"></image>
+                        src='{{picture+ "/quality,Q_50"}}' mode="aspectFill">
+                    </image>
+                    <video wx:for="{{time.videoList}}"
+                        wx:for-item="video"
+                        wx:for-index="i"
+                        wx:key="i"
+                        class="time-video"
+                        src='{{video}}'></video>
                 </view>
                  <view class="time-date">{{time.createDate}}</view>
                  <view class="comment-list" wx:if="{{time.commentList}}">
                     <view class="comment-container" 
                         wx:for="{{time.commentList}}"
                         wx:for-item="comment"
-                        wx:key="*this">
+                        wx:for-index="i"
+                        wx:key="i">
                         <text class="creater">{{comment.creater}}:</text>
                         <text class="text">{{comment.text}}</text>
                     </view>
@@ -65,5 +86,8 @@
            
         </view>
     </view>
-
+    <view class="white-mask {{sendMask ? 'active' : ''}}" wx:if="{{sendMask}}" bind:tap="hideMask"></view>
+    <view class="right-menu {{sendMask ? 'active' : ''}}" bind:tap="sendMessage">
+        <image class="right-menu-image" src="https://img.souche.com/f2e/60b07c81a8abe40ec93b5a94e508c222.png" />
+    </view>
 </view>

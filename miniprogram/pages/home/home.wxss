@@ -1,1 +1,24 @@
-/* pages/home/home.wxss */
+.page-container {
+    display: flex;
+    padding: 32rpx;
+}
+
+.phote-container {
+    margin: 0 12rpx 24rpx 0;
+    width: 234rpx;
+    height: 234rpx;
+    box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.album-picture {
+    width: 100%;
+    height: 100%;
+}
+
+.album-name {
+    text-align: center;
+    color: #1b1c33;
+}
+.photo-container:nth-child(3n) {
+    margin-left: 0;
+}
